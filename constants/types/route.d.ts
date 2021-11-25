@@ -1,0 +1,1 @@
+type IntroduceQueryParam = 'preparation' | 'plan';
