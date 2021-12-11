@@ -42,7 +42,7 @@ const Input = {
         px: '10px',
         py: '15px',
         borderWidth: '1px',
-        borderRadius: '0',
+        borderRadius: '5px',
       },
     },
     flushed: {

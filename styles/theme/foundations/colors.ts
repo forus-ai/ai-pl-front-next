@@ -30,7 +30,7 @@ export type Color = {
 };
 
 export const Light: Color = {
-  primary: '#08BAED',
+  primary: '#1E4A86',
   secondary: '#404152',
   tertiary: '#0C1F6F',
   'primary.sub': '#D6F6FF',

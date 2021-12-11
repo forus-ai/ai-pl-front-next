@@ -5,7 +5,7 @@ import {
 } from '../helper';
 
 export const getToken = () => {
-  const token = getLocalStorage<NullAble<Token>>('@ficl-token', {
+  const token = getLocalStorage<NullAble<Token>>('@ForUs-token', {
     access: null,
     isRegister: false,
     refresh: null,
@@ -14,9 +14,9 @@ export const getToken = () => {
 };
 
 export const setToken = (token: Token) => {
-  setLocalStorage('@ficl-token', token);
+  setLocalStorage('@ForUs-token', token);
 };
 
 export const deleteToken = () => {
-  removeLocalStorage('@ficl-token');
+  removeLocalStorage('@ForUs-token');
 };

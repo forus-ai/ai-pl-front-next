@@ -1,9 +1,9 @@
 import { ComponentSingleStyleConfig } from '@chakra-ui/react';
+
 import textStyles from '../textStyles';
 
 const Button: ComponentSingleStyleConfig = {
   baseStyle: {
-    borderRadius: '0px',
     fontWeight: 'bold',
     _disabled: {
       opacity: 1,
@@ -59,8 +59,12 @@ const Button: ComponentSingleStyleConfig = {
       },
     }),
     unstyled: () => ({ ...commonCSS, ...commonActionEffect }),
+    link: () => ({
+      ...commonCSS,
+      ...commonActionEffect,
+      textDecoration: 'underline',
+    }),
     ghost: {},
-    link: {},
   },
 };
 
@@ -69,7 +73,8 @@ export default Button;
 const commonCSS = {
   w: '100%',
   h: 'fit-content',
-  py: '16px',
+  py: '8px',
+  borderRadius: '5px',
 };
 
 const commonActionEffect = {
