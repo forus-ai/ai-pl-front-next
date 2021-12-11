@@ -40,37 +40,27 @@ const FormHelper = ({
   ...basisProps
 }: FormHelperProps) => {
   return (
-    <FormControl //
-      {...{ isInvalid: !!errorText, ...basisProps }}
-    >
+    <FormControl isInvalid={!!errorText} {...basisProps}>
       {!!label && (
         <FormLabel //
-          {...{ fontWeight: 'bold', mb: '20px', ...labelProps }}
+          mb="10px"
+          fontSize="14px"
+          {...labelProps}
         >
           {label}
         </FormLabel>
       )}
       {children}
       {!!errorText && !successText && (
-        <FormErrorMessage //
-          {...errorTextProps}
-        >
-          {errorText}
-        </FormErrorMessage>
+        <FormErrorMessage {...errorTextProps}>{errorText}</FormErrorMessage>
       )}
       {!!successText && !errorText && (
-        <FormHelperText //
-          {...{ color: 'custom.primary', ...successTextProps }}
-        >
+        <FormHelperText color="custom.primary" {...successTextProps}>
           {successText}
         </FormHelperText>
       )}
       {!!helperText && !errorText && !successText && (
-        <FormHelperText //
-          {...helperTextProps}
-        >
-          {helperText}
-        </FormHelperText>
+        <FormHelperText {...helperTextProps}>{helperText}</FormHelperText>
       )}
     </FormControl>
   );
