@@ -5,10 +5,16 @@ export type StyledConsoleArgs = {
   title?: string;
   data: any;
   topicColor?: CSSProperties['color'];
-  method?: keyof typeof console;
+  method?: keyof Pick<typeof console, 'log' | 'error' | 'info' | 'warn'>;
 };
 
-function styledConsole({ topic = '', title = '', data, topicColor = 'skyblue', method = 'log' }: StyledConsoleArgs) {
+function styledConsole({
+  topic = '',
+  title = '',
+  data,
+  topicColor = 'skyblue',
+  method = 'log',
+}: StyledConsoleArgs) {
   const term_1 = `%c[${topic}]`;
   const term_1_style = [`color: ${topicColor}`, 'font-weight : bold'].join(';');
   const term_2 = `%c${title}`;
