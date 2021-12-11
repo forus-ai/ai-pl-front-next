@@ -1,8 +1,11 @@
-import { useRouter } from 'next/dist/client/router';
-import { ROUTE_DRAWER, ROUTE_MODAL } from 'constants/route';
+import { UseToastOptions, useToast } from '@chakra-ui/toast';
+
 import { RootAction } from './reducer';
 import { RootState } from './state';
-import { useToast, UseToastOptions } from '@chakra-ui/toast';
+
+import { ROUTE_DRAWER, ROUTE_MODAL } from 'constants/route';
+
+import { useRouter } from 'next/dist/client/router';
 
 type RootHandlerArgs = {
   state: RootState;
@@ -17,18 +20,23 @@ export const useRootHandler = ({}: RootHandlerArgs) => {
   });
 
   const openToast = ({
+    id,
     status,
     description,
   }: //
-  Required<Pick<UseToastOptions, 'status' | 'description'>>) => {
+  Required<Pick<UseToastOptions, 'status' | 'description'>> & {
+    id?: string;
+  }) => {
     const titleSwitch: Record<typeof status, string> = {
       success: '성공',
       error: '에러',
       info: '팁',
       warning: '경고',
     };
+    if (id && toast.isActive(id)) return;
     toast({
       //
+      id,
       status,
       description,
       title: titleSwitch[status],

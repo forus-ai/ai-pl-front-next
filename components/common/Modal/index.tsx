@@ -1,6 +1,16 @@
-import { ModalProps, Modal as ChakraModal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/react';
-import Text from 'components/common/Text';
 import React from 'react';
+
+import {
+  Modal as ChakraModal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  ModalProps,
+} from '@chakra-ui/react';
+
+import Text from 'components/common/Text';
 
 interface ModalComponentProps extends ModalProps {
   children: JSX.Element | JSX.Element[];
@@ -8,7 +18,14 @@ interface ModalComponentProps extends ModalProps {
   headerText: string;
 }
 
-const FiclModal = ({ isOpen, onClose, bottomContents, headerText, children, ...props }: ModalComponentProps) => {
+const FiclModal = ({
+  isOpen,
+  onClose,
+  bottomContents,
+  headerText,
+  children,
+  ...props
+}: ModalComponentProps) => {
   return (
     <ChakraModal {...props} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />

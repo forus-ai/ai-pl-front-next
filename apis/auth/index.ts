@@ -1,7 +1,8 @@
-import Router from 'next/dist/client/router';
+import instance from 'apis/config';
 import { ROUTE } from 'constants/route';
 import { deleteToken, getToken, setToken } from 'utils/localStorage/token';
-import instance from 'apis/config';
+
+import Router from 'next/dist/client/router';
 
 const isClient = typeof window !== 'undefined';
 
@@ -20,28 +21,10 @@ export async function refreshToken() {
   }
 }
 
-export async function socialLogin(variables: {
-  state: string;
-  code: string;
-}): Promise<{
-  access: string;
-  refresh: string;
-  isRegister: true;
-}> {
-  const { data } = await instance({
-    method: 'POST',
-    url: '/social_login/',
-    data: variables,
-  });
-
-  return data;
-}
-
 export async function signUp(variables: {
   username: string;
   email: string;
-  phone: string;
-  code: string;
+  password: string;
 }): Promise<{
   access: string;
   refresh: string;
@@ -51,36 +34,5 @@ export async function signUp(variables: {
     url: '/register/',
     data: variables,
   });
-  return data;
-}
-
-export async function verifyPhone(variables: {
-  //
-  phone: string;
-}): Promise<{
-  phone: string;
-  code: string;
-}> {
-  const { data } = await instance({
-    method: 'POST',
-    url: '/phone_verifier/',
-    data: variables,
-  });
-  return data;
-}
-
-export async function verifyPhoneConfirm(variables: {
-  //
-  phone: string;
-  code: string;
-}): Promise<{
-  token: string;
-}> {
-  const { data } = await instance({
-    method: 'POST',
-    url: '/phone_verifier/confirm/',
-    data: variables,
-  });
-
   return data;
 }
